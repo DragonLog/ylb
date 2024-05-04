@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: micr-task
+dubbo:
+  registry:
+    address: zookeeper://192.168.212.128:2181
+    timeout: 10000
+  scan:
+    base-packages: com.zcx.task
+  consumer:
+    check: false
+    timeout: 5000
+    retries: 0

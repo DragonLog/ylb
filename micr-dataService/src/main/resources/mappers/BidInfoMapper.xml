@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcx.dataService.mapper.BidInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zcx.api.model.BidInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="prod_id" jdbcType="INTEGER" property="prodId" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
+    <result column="bid_time" jdbcType="TIMESTAMP" property="bidTime" />
+    <result column="bid_status" jdbcType="INTEGER" property="bidStatus" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.zcx.api.pojo.InvestInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="prod_id" jdbcType="INTEGER" property="prodId" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
+    <result column="bid_time" jdbcType="TIMESTAMP" property="bidTime" />
+    <result column="bid_status" jdbcType="INTEGER" property="bidStatus" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, prod_id, uid, bid_money, bid_time, bid_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b_bid_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectSumBidMoney" resultType="java.math.BigDecimal">
+      select sum(bid_money) as sumBidMoney from b_bid_info
+    </select>
+  <select id="selectByProductId" resultType="com.zcx.api.pojo.BidInfoProduct">
+    select bid.id,CONCAT(SUBSTRING(u.phone FROM 1 FOR 3), "*******", SUBSTRING(u.phone FROM 10 FOR 2)) as phone, DATE_FORMAT(bid.bid_time, "%Y-%m-%d %H:%i:%s") as bidTime, bid.bid_money as bidMoney
+    from b_bid_info bid join u_user u on bid.uid = u.id
+    where bid.prod_id = #{productId}
+    order by bid.bid_time desc
+    limit #{offset}, #{rows}
+  </select>
+    <select id="selectByUid" resultMap="BaseResultMap2">
+    select b.*, p.product_name
+    from b_bid_info b join b_product_info p on b.prod_id = p.id
+    where uid = #{uid}
+    order by bid_time desc
+    limit #{offset},#{rows}
+    </select>
+    <select id="selectByProdId" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"></include>
+      from b_bid_info
+      where prod_id = #{productId} and bid_status = 1
+      order by id
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b_bid_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcx.api.model.BidInfo">
+    insert into b_bid_info (id, prod_id, uid, 
+      bid_money, bid_time, bid_status
+      )
+    values (#{id,jdbcType=INTEGER}, #{prodId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{bidMoney,jdbcType=DECIMAL}, #{bidTime,jdbcType=TIMESTAMP}, #{bidStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcx.api.model.BidInfo">
+    insert into b_bid_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="prodId != null">
+        prod_id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="bidMoney != null">
+        bid_money,
+      </if>
+      <if test="bidTime != null">
+        bid_time,
+      </if>
+      <if test="bidStatus != null">
+        bid_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null">
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="bidMoney != null">
+        #{bidMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="bidTime != null">
+        #{bidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bidStatus != null">
+        #{bidStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcx.api.model.BidInfo">
+    update b_bid_info
+    <set>
+      <if test="prodId != null">
+        prod_id = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="bidMoney != null">
+        bid_money = #{bidMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="bidTime != null">
+        bid_time = #{bidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bidStatus != null">
+        bid_status = #{bidStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcx.api.model.BidInfo">
+    update b_bid_info
+    set prod_id = #{prodId,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      bid_money = #{bidMoney,jdbcType=DECIMAL},
+      bid_time = #{bidTime,jdbcType=TIMESTAMP},
+      bid_status = #{bidStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

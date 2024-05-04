@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcx.dataService.mapper.ProductInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zcx.api.model.ProductInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="cycle" jdbcType="INTEGER" property="cycle" />
+    <result column="release_time" jdbcType="DATE" property="releaseTime" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="product_money" jdbcType="DECIMAL" property="productMoney" />
+    <result column="left_product_money" jdbcType="DECIMAL" property="leftProductMoney" />
+    <result column="bid_min_limit" jdbcType="DECIMAL" property="bidMinLimit" />
+    <result column="bid_max_limit" jdbcType="DECIMAL" property="bidMaxLimit" />
+    <result column="product_status" jdbcType="INTEGER" property="productStatus" />
+    <result column="product_full_time" jdbcType="TIMESTAMP" property="productFullTime" />
+    <result column="product_desc" jdbcType="VARCHAR" property="productDesc" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_name, rate, cycle, release_time, product_type, product_no, product_money, 
+    left_product_money, bid_min_limit, bid_max_limit, product_status, product_full_time, 
+    product_desc, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b_product_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAvgRate" resultType="java.math.BigDecimal">
+      select round(avg(rate), 2) as avgRate from b_product_info
+    </select>
+    <select id="selectByTypeLimit" resultType="com.zcx.api.model.ProductInfo">
+      select
+      <include refid="Base_Column_List"></include>
+      from b_product_info where product_type = #{ptype} order by release_time desc limit #{offset}, #{rows}
+    </select>
+    <select id="selectCountByType" resultType="java.lang.Integer">
+      select count(id) as nums from b_product_info where product_type = #{ptype}
+    </select>
+  <select id="selectByPrimaryKeyForUpdate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from b_product_info
+    where id = #{productId}
+    for update
+  </select>
+    <select id="selectFullTimeProducts" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"></include>
+      from b_product_info
+      where product_status = 1 and product_full_time >= #{beginTime} and product_full_time &lt;= #{endTime}
+      order by id
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b_product_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcx.api.model.ProductInfo">
+    insert into b_product_info (id, product_name, rate, 
+      cycle, release_time, product_type, 
+      product_no, product_money, left_product_money, 
+      bid_min_limit, bid_max_limit, product_status, 
+      product_full_time, product_desc, version
+      )
+    values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{rate,jdbcType=DECIMAL}, 
+      #{cycle,jdbcType=INTEGER}, #{releaseTime,jdbcType=DATE}, #{productType,jdbcType=INTEGER}, 
+      #{productNo,jdbcType=VARCHAR}, #{productMoney,jdbcType=DECIMAL}, #{leftProductMoney,jdbcType=DECIMAL}, 
+      #{bidMinLimit,jdbcType=DECIMAL}, #{bidMaxLimit,jdbcType=DECIMAL}, #{productStatus,jdbcType=INTEGER}, 
+      #{productFullTime,jdbcType=TIMESTAMP}, #{productDesc,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcx.api.model.ProductInfo">
+    insert into b_product_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="cycle != null">
+        cycle,
+      </if>
+      <if test="releaseTime != null">
+        release_time,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="productNo != null">
+        product_no,
+      </if>
+      <if test="productMoney != null">
+        product_money,
+      </if>
+      <if test="leftProductMoney != null">
+        left_product_money,
+      </if>
+      <if test="bidMinLimit != null">
+        bid_min_limit,
+      </if>
+      <if test="bidMaxLimit != null">
+        bid_max_limit,
+      </if>
+      <if test="productStatus != null">
+        product_status,
+      </if>
+      <if test="productFullTime != null">
+        product_full_time,
+      </if>
+      <if test="productDesc != null">
+        product_desc,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="cycle != null">
+        #{cycle,jdbcType=INTEGER},
+      </if>
+      <if test="releaseTime != null">
+        #{releaseTime,jdbcType=DATE},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productNo != null">
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productMoney != null">
+        #{productMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="leftProductMoney != null">
+        #{leftProductMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="bidMinLimit != null">
+        #{bidMinLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="bidMaxLimit != null">
+        #{bidMaxLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="productStatus != null">
+        #{productStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productFullTime != null">
+        #{productFullTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productDesc != null">
+        #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcx.api.model.ProductInfo">
+    update b_product_info
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="cycle != null">
+        cycle = #{cycle,jdbcType=INTEGER},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=DATE},
+      </if>
+      <if test="productType != null">
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productNo != null">
+        product_no = #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productMoney != null">
+        product_money = #{productMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="leftProductMoney != null">
+        left_product_money = #{leftProductMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="bidMinLimit != null">
+        bid_min_limit = #{bidMinLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="bidMaxLimit != null">
+        bid_max_limit = #{bidMaxLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="productStatus != null">
+        product_status = #{productStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productFullTime != null">
+        product_full_time = #{productFullTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productDesc != null">
+        product_desc = #{productDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcx.api.model.ProductInfo">
+    update b_product_info
+    set product_name = #{productName,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=DECIMAL},
+      cycle = #{cycle,jdbcType=INTEGER},
+      release_time = #{releaseTime,jdbcType=DATE},
+      product_type = #{productType,jdbcType=INTEGER},
+      product_no = #{productNo,jdbcType=VARCHAR},
+      product_money = #{productMoney,jdbcType=DECIMAL},
+      left_product_money = #{leftProductMoney,jdbcType=DECIMAL},
+      bid_min_limit = #{bidMinLimit,jdbcType=DECIMAL},
+      bid_max_limit = #{bidMaxLimit,jdbcType=DECIMAL},
+      product_status = #{productStatus,jdbcType=INTEGER},
+      product_full_time = #{productFullTime,jdbcType=TIMESTAMP},
+      product_desc = #{productDesc,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateLeftProductMoney">
+      update b_product_info
+      set left_product_money = left_product_money - #{money}
+      where id = #{productId} and (left_product_money - #{money} >= 0)
+    </update>
+  <update id="updateSelled">
+    update b_product_info
+    set product_status = 1, product_full_time = now()
+    where id = #{productId}
+  </update>
+    <update id="updateStatus">
+      update b_product_info
+      set product_status = #{newStatus}
+      where id = #{id}
+    </update>
+</mapper>

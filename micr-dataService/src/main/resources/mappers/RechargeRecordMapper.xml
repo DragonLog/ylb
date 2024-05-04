@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcx.dataService.mapper.RechargeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.zcx.api.model.RechargeRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="recharge_no" jdbcType="VARCHAR" property="rechargeNo" />
+    <result column="recharge_status" jdbcType="INTEGER" property="rechargeStatus" />
+    <result column="recharge_money" jdbcType="DECIMAL" property="rechargeMoney" />
+    <result column="recharge_time" jdbcType="TIMESTAMP" property="rechargeTime" />
+    <result column="recharge_desc" jdbcType="VARCHAR" property="rechargeDesc" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, recharge_no, recharge_status, recharge_money, recharge_time, recharge_desc, 
+    channel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b_recharge_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUid" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from b_recharge_record
+    where uid = #{uid}
+    order by recharge_time desc
+    limit #{offset}, #{rows}
+  </select>
+    <select id="selectByRechargeNo" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"></include>
+      from b_recharge_record
+      where recharge_no = #{rechargeNo} for update
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b_recharge_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcx.api.model.RechargeRecord">
+    insert into b_recharge_record (id, uid, recharge_no, 
+      recharge_status, recharge_money, recharge_time, 
+      recharge_desc, channel)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{rechargeNo,jdbcType=VARCHAR}, 
+      #{rechargeStatus,jdbcType=INTEGER}, #{rechargeMoney,jdbcType=DECIMAL}, #{rechargeTime,jdbcType=TIMESTAMP}, 
+      #{rechargeDesc,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcx.api.model.RechargeRecord">
+    insert into b_recharge_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="rechargeNo != null">
+        recharge_no,
+      </if>
+      <if test="rechargeStatus != null">
+        recharge_status,
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_money,
+      </if>
+      <if test="rechargeTime != null">
+        recharge_time,
+      </if>
+      <if test="rechargeDesc != null">
+        recharge_desc,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeNo != null">
+        #{rechargeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeStatus != null">
+        #{rechargeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeMoney != null">
+        #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeTime != null">
+        #{rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rechargeDesc != null">
+        #{rechargeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcx.api.model.RechargeRecord">
+    update b_recharge_record
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeNo != null">
+        recharge_no = #{rechargeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeStatus != null">
+        recharge_status = #{rechargeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeTime != null">
+        recharge_time = #{rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rechargeDesc != null">
+        recharge_desc = #{rechargeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcx.api.model.RechargeRecord">
+    update b_recharge_record
+    set uid = #{uid,jdbcType=INTEGER},
+      recharge_no = #{rechargeNo,jdbcType=VARCHAR},
+      recharge_status = #{rechargeStatus,jdbcType=INTEGER},
+      recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      recharge_time = #{rechargeTime,jdbcType=TIMESTAMP},
+      recharge_desc = #{rechargeDesc,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

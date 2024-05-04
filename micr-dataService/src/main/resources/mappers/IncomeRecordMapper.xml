@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcx.dataService.mapper.IncomeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.zcx.api.model.IncomeRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="prod_id" jdbcType="INTEGER" property="prodId" />
+    <result column="bid_id" jdbcType="INTEGER" property="bidId" />
+    <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
+    <result column="income_date" jdbcType="DATE" property="incomeDate" />
+    <result column="income_money" jdbcType="DECIMAL" property="incomeMoney" />
+    <result column="income_status" jdbcType="INTEGER" property="incomeStatus" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.zcx.api.pojo.IncomeInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="prod_id" jdbcType="INTEGER" property="prodId" />
+    <result column="bid_id" jdbcType="INTEGER" property="bidId" />
+    <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
+    <result column="income_date" jdbcType="DATE" property="incomeDate" />
+    <result column="income_money" jdbcType="DECIMAL" property="incomeMoney" />
+    <result column="income_status" jdbcType="INTEGER" property="incomeStatus" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, prod_id, bid_id, bid_money, income_date, income_money, income_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b_income_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectByUid" resultMap="BaseResultMap2">
+      select i.*, p.product_name
+      from b_income_record i join b_product_info p on i.prod_id = p.id
+      where uid = #{uid}
+      order by income_date desc
+      limit #{offset},#{rows}
+    </select>
+    <select id="selectExpiredIncome" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"></include>
+      from b_income_record
+      where income_status = 0 and income_date = #{expiredDate}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b_income_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcx.api.model.IncomeRecord">
+    insert into b_income_record (id, uid, prod_id, 
+      bid_id, bid_money, income_date, 
+      income_money, income_status)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{prodId,jdbcType=INTEGER}, 
+      #{bidId,jdbcType=INTEGER}, #{bidMoney,jdbcType=DECIMAL}, #{incomeDate,jdbcType=DATE}, 
+      #{incomeMoney,jdbcType=DECIMAL}, #{incomeStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcx.api.model.IncomeRecord">
+    insert into b_income_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="prodId != null">
+        prod_id,
+      </if>
+      <if test="bidId != null">
+        bid_id,
+      </if>
+      <if test="bidMoney != null">
+        bid_money,
+      </if>
+      <if test="incomeDate != null">
+        income_date,
+      </if>
+      <if test="incomeMoney != null">
+        income_money,
+      </if>
+      <if test="incomeStatus != null">
+        income_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null">
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="bidId != null">
+        #{bidId,jdbcType=INTEGER},
+      </if>
+      <if test="bidMoney != null">
+        #{bidMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="incomeDate != null">
+        #{incomeDate,jdbcType=DATE},
+      </if>
+      <if test="incomeMoney != null">
+        #{incomeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="incomeStatus != null">
+        #{incomeStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcx.api.model.IncomeRecord">
+    update b_income_record
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null">
+        prod_id = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="bidId != null">
+        bid_id = #{bidId,jdbcType=INTEGER},
+      </if>
+      <if test="bidMoney != null">
+        bid_money = #{bidMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="incomeDate != null">
+        income_date = #{incomeDate,jdbcType=DATE},
+      </if>
+      <if test="incomeMoney != null">
+        income_money = #{incomeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="incomeStatus != null">
+        income_status = #{incomeStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcx.api.model.IncomeRecord">
+    update b_income_record
+    set uid = #{uid,jdbcType=INTEGER},
+      prod_id = #{prodId,jdbcType=INTEGER},
+      bid_id = #{bidId,jdbcType=INTEGER},
+      bid_money = #{bidMoney,jdbcType=DECIMAL},
+      income_date = #{incomeDate,jdbcType=DATE},
+      income_money = #{incomeMoney,jdbcType=DECIMAL},
+      income_status = #{incomeStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

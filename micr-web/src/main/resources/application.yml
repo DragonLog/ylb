@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: micr-web
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  redis:
+    host: 192.168.212.128
+    port: 6379
+server:
+  port: 8000
+  servlet:
+    context-path: /api
+    encoding:
+      enabled: true
+      charset: utf-8
+      force: true
+
+dubbo:
+  registry:
+    address: zookeeper://192.168.212.128:2181
+    timeout: 10000
+  scan:
+    base-packages: com.zcx.front
+  consumer:
+    check: false
+    timeout: 5000
+    retries: 0
+
+aliyun:
+  sms:
+    url: 你所购买短信产品的url地址
+    appCode: 你所购买短信产品的appCode
+    templateId: 你所购买短信产品的templateId
+    smsSignId: 你所购买产品的smsSignId
+    param: 你所购买产品的param
+  realName:
+    url: 你所购买身份证信息验证产品的url
+    appCode: 你所购买身份证信息验证产品的appCode
+
+jwt:
+  secret: f5f78375999c3c19e899a1465fe4a01c
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form name="kqPay" action="https://sandbox.99bill.com/gateway/recvMerchantInfoAction.htm" method="get">
+        <input type="hidden" name="inputCharset" th:th:value="${inputCharset}" />
+        <input type="hidden" name="pageUrl" th:value="${pageUrl}" />
+        <input type="hidden" name="bgUrl" th:value="${bgUrl}" />
+        <input type="hidden" name="version" th:value="${version}" />
+        <input type="hidden" name="language" th:value="${language}" />
+        <input type="hidden" name="signType" th:value="${signType}" />
+        <input type="hidden" name="signMsg" th:value="${signMsg}" />
+        <input type="hidden" name="merchantAcctId" th:value="${merchantAcctId}" />
+        <input type="hidden" name="payerName" th:value="${payerName}" />
+        <input type="hidden" name="payerContactType" th:value="${payerContactType}" />
+        <input type="hidden" name="payerContact" th:value="${payerContact}" />
+        <input type="hidden" name="payerIdType" th:value="${payerIdType}" />
+        <input type="hidden" name="payerId" th:value="${payerId}" />
+        <input type="hidden" name="payerIP" th:value="${payerIP}" />
+        <input type="hidden" name="orderId" th:value="${orderId}" />
+        <input type="hidden" name="orderAmount" th:value="${orderAmount}" />
+        <input type="hidden" name="orderTime" th:value="${orderTime}" />
+        <input type="hidden" name="orderTimestamp" th:value="${orderTimestamp}" />
+        <input type="hidden" name="productName" th:value="${productName}" />
+        <input type="hidden" name="productNum" th:value="${productNum}" />
+        <input type="hidden" name="productId" th:value="${productId}" />
+        <input type="hidden" name="productDesc" th:value="${productDesc}" />
+        <input type="hidden" name="ext1" th:value="${ext1}" />
+        <input type="hidden" name="ext2" th:value="${ext2}" />
+        <input type="hidden" name="payType" th:value="${payType}" />
+        <input type="hidden" name="bankId" th:value="${bankId}" />
+        <input type="hidden" name="redoFlag" th:value="${redoFlag}" />
+        <input type="hidden" name="pid" th:value="${pid}" />
+
+<!--        <input type="submit" name="submit" value="提交到快钱">-->
+    </form>
+    <script>
+        document.forms[0].submit();
+    </script>
+</body>
+</html>
