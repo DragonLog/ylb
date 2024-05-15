@@ -115,6 +115,11 @@ export default {
 	mounted() {
 		doGet("/v1/user/userCenter").then(resp => {
 			if(resp && resp.data.code == 200) {
+
+				let userInfo = JSON.parse(window.localStorage.getItem("userInfo"))；
+				userInfo.name = resp.data.data.name;
+				window.localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
 				this.userBaseInfo = resp.data.data;
 			}
 		});
