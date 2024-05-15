@@ -1,0 +1,217 @@
+body {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.7em;
+    font-family:"Microsoft YaHei","微软雅黑";
+    background: #F4F5F8;
+}
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear:both;
+}
+/*兼容ie浏览器*/
+.clearfix{
+    zoom:1;
+}
+.content{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.user-pay-box{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 35px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px 25px;
+}
+.user-pay-box .user-pay-left{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 130px;
+    padding-right: 22px;
+}
+.user-pay-box .user-pay-left .user-pay-title1{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 18px;
+    font-weight: 400;
+    color: #515052;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+.user-pay-box .user-pay-left .user-pay-title1:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -10px;
+    width: 3px;
+    height: 20px;
+    background: #4386FE;
+}
+.user-pay-box .user-pay-left .user-pay-list{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+}
+.user-pay-box .user-pay-left .user-pay-list a{
+    display: inline-block;
+    width: 104px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #535254;
+    margin-top: 20px;
+}
+.user-pay-box .user-pay-left .user-pay-list a.user-pay-list-on{
+    background: #4386FE;
+    color: #ffffff;
+}
+.user-pay-box .user-pay-right{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 1010px;
+    height: 100%;
+    border-left: 1px solid #E5E6EC;
+    padding-left: 30px;
+}
+.user-pay-box .user-pay-right .user-pay-title2{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 400;
+    color: #525153;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #E5E7EB;
+}
+.user-pay-box .user-pay-right .user-pay-form{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-pay-box .user-pay-right .user-pay-form img{
+    width: 182px;
+    height: 61px;
+    margin: 45px auto 20px;
+}
+.user-pay-box .user-pay-right .user-pay-form .user-pay-form-ts{
+    font-size: 18px;
+    font-weight: 400;
+    color: #525153;
+    text-align: center;
+}
+.user-pay-box .user-pay-right .user-pay-form input{
+    width: 230px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 38px;
+    height: 38px;
+    border-radius: 5px;
+    padding:0 10px;
+    position: relative;
+    border: none;
+    display: block;
+    margin: 15px 0;
+    font-size: 18px;
+}
+.user-pay-box .user-pay-right .user-pay-form form input::-webkit-input-placeholder{
+    color: #C8CACE;
+    text-align: right;
+}
+.user-pay-box .user-pay-right .user-pay-form form input:-moz-placeholder{
+    color: #C8CACE;
+    text-align: right;
+}
+.user-pay-box .user-pay-right .user-pay-form form input::-moz-placeholder{
+    color: #C8CACE;
+    text-align: right;
+}
+.user-pay-box .user-pay-right .user-pay-form form input:-ms-input-placeholder{
+    color: #C8CACE;
+    text-align: right;
+}
+.user-pay-box .user-pay-right .user-pay-form .number-money{
+    border: 1px solid #CCCED1;
+    color: #525153;
+    text-align: left;
+}
+.user-pay-box .user-pay-right .user-pay-form .submit-btn{
+    background: #4386FE;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+.user-pay-box .user-pay-right .user-pay-sm{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #F9FAFC;
+    width: 615px;
+    padding: 10px 25px;
+    margin: 40px auto;
+    border-radius: 10px;
+}
+.user-pay-box .user-pay-right .user-pay-sm h3{
+    font-size: 16px;
+    font-weight: 400;
+    color: #FC8358;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.user-pay-box .user-pay-right .user-pay-sm p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #89888B;
+    line-height: 24px;
+    margin: 2px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

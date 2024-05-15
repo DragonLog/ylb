@@ -1,0 +1,234 @@
+body {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.7em;
+    font-family:"Microsoft YaHei","微软雅黑";
+    background: #F4F5F8;
+}
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear:both;
+}
+/*兼容ie浏览器*/
+.clearfix{
+    zoom:1;
+}
+.content{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.login-content{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 1200px;
+    background: url("../image/login-bg.jpg") no-repeat center;
+    background-size: cover;
+    height: 785px;
+    overflow: hidden;
+}
+.login-content .login-flex{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 1075px;
+    margin: 160px auto 0;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-content .login-flex .login-left h3{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 24px;
+    font-weight: 400;
+    color: #FFFFFF;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+.login-content .login-flex .login-left h3:before{
+    content: "";
+    width: 50px;
+    height: 6px;
+    border-radius: 25px;
+    background: #FE2E55;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.login-content .login-flex .login-left p{
+    font-size: 20px;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 50px;
+}
+.login-content .login-flex .login-left p span{
+    display: inline-block;
+    margin: 0 5px;
+    color: #F33748;
+    font-size: 34px;
+}
+.login-content .login-flex .login-box{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 370px;
+    background: #ffffff;
+    padding: 10px 25px;
+}
+.login-content .login-flex .login-box .login-title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: #4D4C4E;
+    margin: 35px auto;
+}
+.login-content .login-flex .login-box .alert-input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.login-content .login-flex .login-box .alert-input p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #FE2E55;
+    height: 18px;
+    line-height: 18px;
+}
+.login-content .login-flex .login-box .form-border{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background: #F4F5F9;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 16px;
+    text-align: left;
+    border: none;
+}
+input::-webkit-input-placeholder{
+    color: #918F93;
+}
+input:-ms-input-placeholder{
+    color: #918F93;
+}
+.login-content .login-flex .login-box .form-yzm{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-content .login-flex .login-box .form-yzm input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 55%;
+    height: 45px;
+    line-height: 45px;
+    background: #F4F5F9;
+    border: none;
+    font-size: 16px;
+}
+.login-content .login-flex .login-box .form-yzm .yzm-send{
+    width: 40%;
+    text-align: right;
+    cursor: pointer;
+    color: #688EF9;
+}
+.login-content .login-flex .login-box .alert-input-btn{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    margin: 25px auto;
+}
+.login-content .login-flex .login-box .alert-input-btn input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 53px;
+    line-height: 53px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: #FFFFFF;
+    background: #FE2E55;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.login-content .login-flex .login-box .alert-input-agree{
+    font-size: 14px;
+    font-weight: 400;
+    color: #918F93;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.login-content .login-flex .login-box .alert-input-agree i{
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 16px;
+}
+.login-content .login-flex .login-box .alert-input-agree i.fa-check-square-o{color: #FE2E55;}
+.login-content .login-flex .login-box .alert-input-agree a{
+    display: inline-block;
+    color: #FE2E55;
+}
+.login-content .login-flex .login-box .login-skip{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #918F93;
+    margin-bottom: 25px;
+    margin-top: -10px;
+}
+.login-content .login-flex .login-box .login-skip a{
+    color: #688EF9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

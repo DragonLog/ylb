@@ -1,0 +1,196 @@
+.public-head{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 1200px;
+    background: #ffffff;
+}
+.public-head .public-head-nav{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 0 auto;
+    height: 68px;
+}
+.public-head .public-head-nav .public-head-left{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    /*width: 925px;*/
+    height: 68px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+.public-head .public-head-nav .public-head-left .public-head-logo{
+    width: 96px;
+    height: 30px;
+}
+.public-head .public-head-nav .public-head-left .public-head-list li{
+    display: inline-block;
+    margin-left: 45px;
+    line-height: 46px;
+}
+.public-head .public-head-nav .public-head-left .public-head-list li a{
+    display: inline-block;
+    color: #3F3F3F;
+    font-size: 18px;
+}
+.public-head .public-head-nav .public-head-left .public-head-list .public-head-hover{
+    position: relative;
+}
+.public-head .public-head-nav .public-head-left .public-head-list .public-head-hover>a{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url("../image/nav-sj.png") no-repeat center right;
+    padding-right: 16px;
+}
+.public-head .public-head-nav .public-head-left .public-head-list .public-head-hover .two-title{
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    margin-left: -53px;
+    width: 106px;
+    height: 75px;
+    background: #ffffff;
+    z-index: 9999;
+    box-shadow: 0 0 6px 1px #EDEEF1;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    line-height: 20px;
+}
+.public-head .public-head-nav .public-head-left .public-head-list .public-head-hover .two-title a{
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.public-head .public-head-nav .public-head-left .public-head-list .public-head-hover:hover .two-title{display: block;}
+.public-head .public-head-nav .public-head-left .public-head-list li a:hover{color:#FE2E55;}
+.public-head .public-head-nav .public-head-right{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: right;
+    height: 68px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+}
+.public-head .public-head-nav .public-head-right a{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 75px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #9A9898;
+    color: #9A9898;
+    margin-left: 12px;
+    border-radius: 5px;
+}
+.public-head .public-head-nav .public-head-right a:last-child{
+    color: #E42029;
+    border: 1px solid #E42029;
+}
+/*底部*/
+.public-bottom{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 1200px;
+    background: #434B58;
+}
+.public-bottom div{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    width: 1200px;
+    height: 112px;
+    margin: 0 auto;
+}
+.public-bottom p{
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: 400;
+    color: #B6B8BA;
+    margin: 5px 0;
+}
+.public-bottom p a{
+    color: #688EF9;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

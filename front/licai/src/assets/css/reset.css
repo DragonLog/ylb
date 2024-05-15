@@ -1,0 +1,200 @@
+@charset "utf-8";
+/* 初始化 */
+body, span, div, img, ul, ol, li, p, dl, dt, dd, input, form, h1, h2, h3, h4, h5, h6, * {
+	margin: 0;
+	padding: 0;
+}
+img {
+	border: none;
+}
+
+ul {
+	list-style: none;
+}
+body {
+	color: #888;
+	font-size: 12px;
+	line-height: 1.7em;
+	font-family:"微软雅黑";
+}
+a {
+	text-decoration:none;
+	color:#000;
+}
+a:hover {
+	text-decoration:none;
+	color:#000;
+}
+input:focus {
+	outline: none;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.abs {
+	position: absolute;
+}
+.rel {
+	position: relative;
+}
+.clear {
+	clear: both;
+	height: 0;
+	overflow: hidden
+}
+
+.return-style{
+	font-size: 14px;
+	color: black;
+	line-height: 1.6em;
+}
+.return-style ol {
+	display: block;
+	list-style-type: decimal;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+}
+.return-style ul{
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+}
+.return-style ol ul li{
+	list-style-type: circle;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+.return-style ul ol li{
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+.return-style ul,.return-style ul li{list-style: disc ;}
+.return-style ol,.return-style ol li{list-style: decimal ;}
+.return-style pre{
+	border-radius: 8px;
+	overflow-x: scroll;
+	word-wrap: break-word;
+	word-break: keep-all;
+	white-space: pre;
+}
+
+.return-style h1{
+	display: block;
+	font-size: 2em;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+.return-style h2{
+	display: block;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+.return-style h3{
+	display: block;
+	font-size: 1.17em;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+.return-style h4{
+	display: block;
+	margin-block-start: 1.33em;
+	margin-block-end: 1.33em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+.return-style h5{
+	display: block;
+	font-size: 0.83em;
+	margin-block-start: 1.67em;
+	margin-block-end: 1.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+.return-style h6{
+	display: block;
+	font-size: 0.67em;
+	margin-block-start: 2.33em;
+	margin-block-end: 2.33em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+.return-style pre{border-radius: 8px;overflow: auto;}
+
+/*2020/10/14*/
+.return-style table{border-color: grey;}
+.return-style a{text-decoration: underline;color: #0000EE;}
+.return-style i,em{font-style: italic; }
+.return-style table{ display: table }
+.return-style tr{ display:table-row }
+.return-style thead{ display:table-header-group }
+.return-style tbody{ display:table-row-group }
+.return-style tfoot{ display:table-footer-group }
+.return-style col{ display:table-column }
+.return-style colgroup{ display:table-column-group }
+.return-style td, th{ display: table-cell;}
+.return-style caption{ display: table-caption }
+.return-style th{font-weight: bolder; text-align: center }
+.return-style caption{ text-align: center }
+.return-style thead, tbody,tfoot { vertical-align:middle }
+.return-style td, th { vertical-align:inherit }
+.return-style pre, tt, code,kbd, samp  { font-family: monospace }
+
+/*以下表格样式为网站文档默认表格样式*/
+/*.return-style table{
+	border-collapse: collapse;
+}
+
+.return-style table th{
+	color: #ffffff;
+	background-color: #555555;
+	border: 1px solid #D4D4D4;
+	padding:6px 5px;
+}
+
+.return-style table thead th{
+	color: #ffffff !important;
+	background-color: #555555;
+	border: 1px solid #D4D4D4;
+	text-align: center;
+	padding:6px 5px;
+}
+.return-style table thead th p{
+	text-align: center;
+	color: #ffffff !important;
+}
+.return-style table thead th span{
+	color: #ffffff !important;
+}
+
+.return-style table tr:nth-child(odd) {
+	background-color: #F6F4F0;
+}
+.return-style table td{
+	padding:8px 5px;
+	border: 1px solid #D4D4D4;
+}*/
+
